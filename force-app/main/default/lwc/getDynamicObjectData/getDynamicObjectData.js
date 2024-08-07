@@ -209,6 +209,7 @@ export default class GetDynamicObjectData extends NavigationMixin(LightningEleme
         this.showSpinner = false;
     }
 
+    //method to fields
     processFields(fieldSetResult) {
         //console.log("fieldSetResult", JSON.stringify(fieldSetResult));
         //get listview fields to create form
