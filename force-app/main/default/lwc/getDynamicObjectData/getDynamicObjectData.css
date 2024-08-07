@@ -1,0 +1,24 @@
+.slds-modal__container.custom-modal-width {
+    width: 90%; /* Adjust the width as needed */
+    max-width: 1000px; /* Adjust the max-width as needed */
+  }
+  
+  .slds-modal__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .slds-modal__content.custom-modal-content {
+    max-height: calc(100vh - 7.5rem); /* Adjust to make room for the footer */
+    overflow-y: auto;
+  }
+  
+  .slds-modal__footer.custom-modal-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+  }

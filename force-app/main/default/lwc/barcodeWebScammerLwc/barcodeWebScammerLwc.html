@@ -1,0 +1,11 @@
+<template>
+    <lightning-card icon-name="utility:scan" title="Barcode Scanner">
+        <div class="slds-var-p-horizontal_medium">
+            <lightning-button variant="netural" label="Click Here to Scan" title="Click Here to Scan" 
+            onclick={handleClick}></lightning-button>
+            <div class="slds-var-p-vertical_large">
+                <span>{scannedResult}</span>
+            </div>
+        </div>
+    </lightning-card>
+</template>

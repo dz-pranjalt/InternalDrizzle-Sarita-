@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Config File" icon-name="custom:custom4">
+        <p>{greeting}</p>
+        <p>{headding}</p>
+        <p>{label.label}</p>
+        <!--<div style={backgroundStyle}>
+        </div>-->
+        <!-- <p><img src={label.testRes} width="50%" height="50%"></p> -->
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item padding="around-small">
+                <p>{label.lang}</p>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <p>{label.userId}</p>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <p>{label.currency}</p>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <p>{label.timezone}</p>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

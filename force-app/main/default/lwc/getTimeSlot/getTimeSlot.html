@@ -1,0 +1,33 @@
+<template>
+    <lightning-card variant="Narrow" title="Lead Appointment" icon-name="standard:account">
+
+        <lightning-layout>
+            <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="6"
+                padding="around-small">
+                <lightning-input label="Enter Pincode" variant="label-inline" value={pinVal}
+                    onchange={handlePincode}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="2"
+                padding="around-small">
+                <lightning-button label="Get Details" variant="brand" onclick={getPincodeDetails}
+                    class="slds-p-top_large"></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <div class="slds-align_absolute-center">
+            <template if:true={showSlot}>
+                <lightning-checkbox-group name="Checkbox Group" label="Select Time Slot" options={options} value={value}
+                    onchange={handleChange}>
+                </lightning-checkbox-group>
+            </template></div><br></br>
+           
+            <!-- <template for:each={listOfSlot} for:item="timeS">
+            <center key={timeS.id}><lightning-input type="checkbox" variant="standard" name="name" value={timeS} onclick={handleInputCheck}></lightning-input></center>
+        </template> -->
+
+           <center> <template if:true={isSlotSelected}>
+                <lightning-button label="Submit Details" variant="brand" onclick={submitAppointment}
+                    class="slds-p-top_large"></lightning-button></template></center>
+        
+    </lightning-card>
+</template>

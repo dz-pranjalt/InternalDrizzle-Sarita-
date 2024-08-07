@@ -1,0 +1,131 @@
+<template>
+    <div class="slds-box slds-theme_shade">
+        <lightning-button label="Show Modal" onclick={showModal}> </lightning-button>
+    </div>
+    <template if:true={openModal}>
+        <div class="slds-modal slds-fade-in-open slds-backdrop">
+            <div class="slds-modal__container">
+
+                <div class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close" alternative-text="Close this window" size="large"
+                        variant="bare-inverse" onclick={closeModal} class="slds-modal__close">
+                    </lightning-button-icon>
+                    <h4 style="font-size: large;">New Lead : B2B</h4>
+                </div>
+
+                <div class="slds-modal__content slds-p-around_medium">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-combobox name="stage" class="validate slds-m-right_small" label="Lead Stage"
+                                value={value} options={leadStage} disabled={isDisable} required
+                                onchange={handleStage}></lightning-combobox>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input type="text" variant="standard" name="reson" label="Reason(Not Interested)"
+                                placeholder="type here..." onchange={handleReson} class="validate" value={resonName}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-combobox name="temprature" class="validate slds-m-right_small"
+                                label="Temperature" value={value} options={leadTemperature} disabled={isDisable}
+                                required onchange={handleTemperature}></lightning-combobox>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-combobox name="status" class="validate slds-m-right_small" label="Lead Status"
+                                value={value} options={leadStatus} disabled={isDisable} required
+                                onchange={handleStatus}></lightning-combobox>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input type="text" variant="standard" name="lastAction"
+                                class="validate slds-m-right_small inpName" label="Last Action" placeholder="type here..." value={lastAction}
+                                onchange={handleLastAction} ></lightning-input>
+
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input type="text" variant="standard" name="nextAction"
+                                class="validate slds-m-right_small inpName" label="Next Action" placeholder="type here..."
+                                onchange={handleNextAction} value={nextAction}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input type="text" variant="standard" name="universityName"
+                                class="validate slds-m-right_small inpName" label="University Name" placeholder="type here..." value={uniName}
+                                required onchange={handleUniName}></lightning-input>
+
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input type="text" variant="standard" name="universityId"
+                                class="validate slds-m-right_small inpName" label="University Id" placeholder="type here..." value={uniId}
+                                onchange={handleUniId}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input type="text" variant="standard" name="school"
+                                class="validate slds-m-right_small inpName" label="School / Department" value={schoolDep}
+                                placeholder="type here..." required onchange={handleSchoolDep}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-combobox name="pipeline" class="validate slds-m-right_small" label="Pipeline"
+                                value={value} options={leadPipeline} disabled={isDisable} required
+                                onchange={handlePipeline}></lightning-combobox>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-combobox name="country" class="validate slds-m-right_small" label="Country"
+                                value={value} options={leadCountry} disabled={isDisable} required
+                                onchange={handleCountry}></lightning-combobox>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-combobox name="state" class="validate slds-m-right_small" label="State"
+                                value={value} options={leadCountry} disabled={isDisable} required
+                                onchange={handleCountry}></lightning-combobox><br /><br /><br /><br />
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input type="text" variant="standard" name="city"
+                                class="validate slds-m-right_small inpName" label="City" placeholder="type here..." required value={leadCity}
+                                onchange={hanledLeadCity}></lightning-input>
+                        </div><br /><br /><br /><br />
+
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input type="text" variant="standard" name="targetAmount" label="Target Amount"
+                                class="validate slds-m-right_small inpName" placeholder="type here..." value={targetVal}
+                                onchange={handleTargetVal}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input type="text" variant="standard" name="finaleAmount" label="Final Amount"
+                                class="validate slds-m-right_small inpName" placeholder="type here..." value={finalVal}
+                                onchange={handleFinalVal}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-combobox name="subOpted" class="validate slds-m-right_small"
+                                label="Subscription Package Opted" value={value} options={leadSubOffer}
+                                disabled={isDisable} required onchange={handleSubOpted}></lightning-combobox>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-combobox name="subOffer" class="validate slds-m-right_small"
+                                label="Subscription Package Offer" value={value} options={leadSubOffer}
+                                disabled={isDisable} required
+                                onchange={handleSubOffer}></lightning-combobox><br></br><br>
+                        </div>
+
+                        <span>Lead Dates</span>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="slds-modal__footer">
+                    <center>
+                        <lightning-button label="Cancel" onclick={closeModal}>>
+                        </lightning-button> &nbsp;&nbsp;
+                        <lightning-button label="Save &amp; New" onclick={closeModal}>>
+                        </lightning-button>&nbsp;&nbsp;
+                        <lightning-button class=" slds-m-right_small slds-m-bottom_large" variant="brand" label="Save"
+                            onclick={handleSave}>
+                        </lightning-button>
+
+                    </center>
+                </div>
+            </div>
+        </div>
+    </template>
+</template>

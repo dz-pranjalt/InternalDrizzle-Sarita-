@@ -1,0 +1,22 @@
+<aura:component controller="getLeadData" implements="flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" access="global" >
+    <!--<aura:handler name="lookupEvent" event="c:lookupEvent" action="{!c.handleComponentEvent}"/> -->
+    <aura:handler event="c:lookupEvent" action="{!c.handleComponentEvent}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <aura:attribute name="optionsVal" type="String"/>
+    <aura:attribute name="getId" type="String"/>
+    <aura:attribute name="name" type="String"/>
+    <aura:attribute name="comments" type="String"/>
+    
+    <lightning:input name="Name" label="Name" type="text" required="true" value="{!v.name}" ></lightning:input>
+    <lightning:select aura:id="select1" label="Subject" required="true" onchange="{!c.onChange}">
+        <option value="Call">Call</option>
+        <option value="Email">Email</option>
+        <option value="Send Later">Send Later</option>
+        <option value="Send Quote">Send Quote</option>
+        <option value="Other">Other</option>
+    </lightning:select>
+    <lightning:textarea name="Comments" label="Comments" value="{!v.comments}" required="true"></lightning:textarea>
+    <lightning:button aura:id="submit" type="submit" label="Save record" variant="brand" class="slds-m-top_medium slds-align_absolute-center" onclick="{!c.handleSubmit}"/>
+    
+    
+</aura:component>

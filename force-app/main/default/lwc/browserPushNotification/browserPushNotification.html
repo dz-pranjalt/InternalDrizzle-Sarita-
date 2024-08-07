@@ -1,0 +1,15 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account">
+        <lightning-button  label="Click Me " onblur={handlesBlure} onfocus={handleFocus}></lightning-button>
+       <template if:true={clicked}>
+        <div class="slds-p-around_large">
+            <img src={imgUrl} alt="feel Nature" width="480px;" height="240px">
+        </div>
+       </template>
+       <template if:true={clicked2}>
+        <div class="slds-p-around_large">
+            <img src={imgUrl2} alt="feel Nature" width="480px;" height="240px">
+        </div>
+       </template>
+    </lightning-card>
+</template>

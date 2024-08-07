@@ -1,0 +1,92 @@
+<template>
+
+	<lightning-card variant="Narrow" title="Beauty" icon-name="standard:account">
+		<template if:false={showImageInfo}>
+			<div class="slds-p-around_medium slds-m-around_medium">
+				<lightning-input type="text" variant="standard" name="hariinput" label="Enter Hair Style"
+					placeholder="type here..." value={hairVal} onchange={handleHairiName} onfocus={handleFocus}>
+				</lightning-input><br/>
+				<lightning-button variant="brand" label="Search" title="search" onclick={handleSearch}>
+				</lightning-button><br/>
+				<template if:true={hairResult}>
+					<template for:each={hairResult} for:item="obj">
+						<div class="slds-grid slds-wrap" key={obj.Id}>
+							<div class=" slds-size_1-of-3">
+								<strong>HairCut Name </strong>{obj.Name}<br/><br/>
+								<img src={obj.Image_Url__c} onclick={imgClick} data-id={obj.Name} width="50%" height="50%"/>
+				</div>
+							</div>
+					</template>
+				</template>
+
+
+			</div>
+		</template>
+
+		<template if:true={showImageInfo}>
+			<center>
+				<template for:each={hairDetailResult} for:item="obj">
+					<div class="slds-grid slds-gutters" key={obj.Id}>
+						<div class="slds-col slds-size_2-of-3">
+							<strong>HairCut Name </strong>{obj.Name}<br/>
+							<strong>Description </strong>{obj.Description__c}<br/><br/>
+							<center><img src={obj.ImgUrl__c} onclick={imgClick} data-id={obj.Name}/></center>
+						</div>
+					</div>
+				</template><br/><br/>
+				<lightning-button variant="brand" label="Book Appointment" title="search" onclick={handleAppointment}>
+				</lightning-button> &nbsp;&nbsp;&nbsp;
+				<lightning-button variant="brand" label="Cancel" title="search" onclick={handleAppointmentCancel}>
+				</lightning-button>
+			</center>
+		</template>
+		<template if:true={bookAppointment}>
+			<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+				aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container">
+					<!-- Modal Box LWC header here -->
+					<header class="slds-modal__header">
+						<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCancel}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+						<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Book Appointment : {selectedPic}</h2>
+					</header>
+					<!-- Modal Box LWC body starts here -->
+					<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+							<lightning-input type="number" variant="standard" name="users" label="Number of Customers Appointment"></lightning-input>&nbsp;&nbsp;
+						<lightning-input type="datetime" variant="standard" name="name" label="Select Date/Time"
+							value={selectedDT} onclick={handleDT}></lightning-input> &nbsp;&nbsp;
+
+						<lightning-combobox name="userName" label="Select the User" value={value}
+							placeholder="Select Progress" options={usersList} onchange={handleselectedUser}>
+						</lightning-combobox><br/><br/><br/>
+
+						<template for:each={appointmentUsersData} for:item="appUsedData">
+							<div key={appUsedData.Id}>
+								<Strong>Today Existing Appointment of Beautician</Strong><br/><br/>
+							<Strong>DateTime</Strong> : {dateSplit} {timeSplit} &nbsp;&nbsp;
+							<Strong>HairCut</Strong> : {appUsedData.Name}
+							
+							</div>
+						</template>
+					</div>
+					<!-- Modal Box LWC footer starts here -->
+					<footer class="slds-modal__footer">
+						<center>
+							<lightning-button variant="brand" label="Save" onclick={handleSave}></lightning-button>
+							&nbsp;&nbsp;
+							<lightning-button variant="neutral" label="Cancel" onclick={handleCancel}>
+							</lightning-button>
+						</center>
+					</footer>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+		</template>
+
+	</lightning-card>
+</template>

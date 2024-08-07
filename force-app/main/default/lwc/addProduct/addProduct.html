@@ -1,0 +1,39 @@
+<template>
+	<lightning-card class="slds-box" variant="Create Product" title="product" icon-name="standard:account">
+		<div class="slds-p-around_medium">
+			
+				<template for:each={inputFields} for:item="inputField">
+					<lightning-card variant="Create Product" key={inputField.id}>
+						<div class="slds-box">
+							<div key={inputField.id}>
+								<lightning-input type="text" variant="standard" name="fname" label="First Name"
+									value={inputFields.firstName} data-id={inputField.id}
+									placeholder="type first here..." onchange={handleFirstNameChange}></lightning-input>
+								<lightning-input type="text" variant="standard" name="lname" label="Last Name"
+									value={inputFields.lastName} data-id={inputField.id} placeholder="type last here..."
+									onchange={handleLastNameChange}></lightning-input>
+								<lightning-input type="email" variant="standard" name="ename" label="Email"
+									value={inputFields.email} data-id={inputField.id} placeholder="type email here..."
+									onchange={handleEmailChange}></lightning-input>
+								<lightning-file-upload label="Upload File" data-id={inputField.id}
+									accept={acceptedFormats} record-id={inputField.id}
+									onuploadfinished={handleFileUpload}></lightning-file-upload>
+								<lightning-button class="btn" label="Cancel" data-id={inputField.id}
+									onclick={handleCancelClick}></lightning-button>
+								<br/><br/>
+						</div>
+							</div>
+					</lightning-card>
+				</template>
+			
+					 </div> <br />
+				<div class="slds-align_absolute-center">
+					<lightning-button label="Add Product" onclick={addInputFields} variant="brand"></lightning-button>
+					&nbsp;&nbsp;
+					<lightning-button variant="brand" label="Save" title="saveprodcut" onclick={handleSaveClick}>
+					</lightning-button>
+				</div>
+
+
+	</lightning-card>
+</template>

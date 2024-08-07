@@ -1,0 +1,9 @@
+<template>
+    <c-child-async></c-child-async>
+    
+    <lightning-button label="Call Async Child Function Normally" onclick={handleCallNormal}></lightning-button>
+    <lightning-button label="Call Async Function from callback In Parent" onclick={handleCallfromCallback}>
+    </lightning-button>
+    <lightning-button label="Call Async Function from Service JS In Parent" onclick={handleCallfromService}>
+    </lightning-button>
+</template>

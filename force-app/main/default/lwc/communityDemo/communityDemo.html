@@ -1,0 +1,130 @@
+<template>
+    <lightning-card>
+        <div class="slds-grid">
+            <lightning-layout multiple-rows="true" style="padding-left: 135px;">
+                <lightning-layout-item size="6">
+                    <div class="slds-col slds-size_1-of-2 a">
+                        <div class="slds-m-top_medium slds-m-bottom_x-large">
+                            <div class="slds-p-around_medium lgc-bg">
+                                <div class="slds-box-#rcorners1" style="border-radius: 25px;
+                        border: 2px solid #C5F3C0;
+                        padding: 20px;
+                        width:350px;
+                        height: 100px;  ">
+                                    <lightning-tile label="Getting Started" onclick={handlclick} type="media"
+                                        style="font-size: 18px;">
+                                        <lightning-icon slot="media" icon-name="standard:question_feed">
+                                        </lightning-icon>
+                                        <p class="slds-truncate" title="my title" style="font-size: 14px;">Learn The
+                                            Basics Of Starting </p>
+                                    </lightning-tile>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6">
+                    <div class="slds-col slds-size_1-of-2 b">
+                        <div class="slds-m-top_medium slds-m-bottom_x-large">
+                            <div class="slds-p-around_medium lgc-bg">
+                                <div class="slds-box-#rcorners2" style="border-radius: 25px;
+                        border: 2px solid #C5F3C0;
+                        padding: 20px;
+                        width: 350px;
+                        height: 100px;  ">
+                                    <lightning-tile label="Products & Services" onclick={handlclick} type="media"
+                                        style="font-size: 18px;">
+                                        <lightning-icon slot="media" icon-name="product_service_campaign">
+                                        </lightning-icon>
+                                        <p class="slds-truncate" title="my title" style="font-size: 14px;">Know more
+                                            about products and services</p>
+                                    </lightning-tile>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6">
+                    <div class="slds-col slds-size_1-of-2 c">
+                        <div class="slds-m-top_medium slds-m-bottom_x-large">
+                            <div class="slds-p-around_medium lgc-bg">
+                                <div class="slds-box-#rcorners1" style="border-radius: 25px;
+                        border: 2px solid #C5F3C0;
+                        padding: 20px;
+                        width:350px;
+                        height: 100px;  ">
+                                    <lightning-tile label="Buying Guide" onclick={handlclick} type="media"
+                                        style="font-size: 18px;">
+                                        <lightning-icon slot="media" icon-name="standard:question_feed">
+                                        </lightning-icon>
+                                        <p class="slds-truncate" title="my title" style="font-size: 14px;">Learn The
+                                            Basics Of Starting </p>
+                                    </lightning-tile>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6">
+                    <div class="slds-col slds-size_1-of-2 d">
+                        <div class="slds-m-top_medium slds-m-bottom_x-large">
+                            <div class="slds-p-around_medium lgc-bg">
+                                <div class="slds-box-#rcorners1" style="border-radius: 25px;
+                        border: 2px solid #C5F3C0;
+                        padding: 20px;
+                        width:350px;
+                        height: 100px;  ">
+                                    <lightning-tile label="Warranty" onclick={handlclick} type="media"
+                                        style="font-size: 18px;">
+                                        <lightning-icon slot="media" icon-name="standard:question_feed">
+                                        </lightning-icon>
+                                        <p class="slds-truncate" title="my title" style="font-size: 14px;">Learn The
+                                            Basics Of Starting </p>
+                                    </lightning-tile>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6">
+                    <div class="slds-col slds-size_1-of-2 e">
+                        <div class="slds-m-top_medium slds-m-bottom_x-large">
+                            <div class="slds-p-around_medium lgc-bg">
+                                <div class="slds-box-#rcorners1" style="border-radius: 25px;
+                        border: 2px solid #C5F3C0;
+                        padding: 20px;
+                        width:350px;
+                        height: 100px;  ">
+                                    <lightning-tile label="Benefits of RO" onclick={handlclick} type="media"
+                                        style="font-size: 18px;">
+                                        <lightning-icon slot="media" icon-name="standard:question_feed">
+                                        </lightning-icon>
+                                        <p class="slds-truncate" title="my title" style="font-size: 14px;">Learn The
+                                            Basics Of Starting </p>
+                                    </lightning-tile>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <hr>
+        <div class="slds-p-around_small slds-m-around_medium">    
+            <center><h4><b>Top Articles</b></h4></center>
+        <template for:each={knowData} for:item="kcw">
+        <span key={kcw.Id}>
+                <b >Title</b><br />
+            <p>{kcw.Title}</p>
+
+            <b >Url name</b><br />
+            <p >{kcw.UrlName }</p>
+
+            <b>Question</b><br/>
+            <p>{kcw.Question__c}</p><br/>
+        </span>
+        </template><br/><br/>
+    </div>
+
+    </lightning-card>
+</template>

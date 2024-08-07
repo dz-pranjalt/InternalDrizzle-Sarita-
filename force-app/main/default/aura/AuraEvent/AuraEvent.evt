@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT" description="Event template" >
+    <aura:attribute name="passingValue" type="String"></aura:attribute>
+</aura:event>
+
+ <!-- let var @track @api-->

@@ -1,0 +1,13 @@
+<template>
+    <lightning-accordion allow-multiple-sections-open active-section-name="A" onsectiontoggle={handleSectionToggle} >
+        <lightning-accordion-section name="A" label="Accordion Title A" onselect={handleSelect}>
+            <p>This is the content area for section A.</p>
+        </lightning-accordion-section>
+        <lightning-accordion-section name="B" label="Accordion Title B" onselect={handleSelect}>
+            <p>This is the content area for section B.</p>
+        </lightning-accordion-section>
+        <lightning-accordion-section name="C" label="Accordion Title C" onselect={handleSelect}>
+            <p>This is the content area for section C.</p>
+        </lightning-accordion-section>
+    </lightning-accordion>
+</template>

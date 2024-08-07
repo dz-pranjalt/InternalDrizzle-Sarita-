@@ -1,0 +1,22 @@
+<template>
+    <lightning-button variant="brand" label="Delete Account" title="titleName" onclick={deleteRecord}>
+    </lightning-button>&nbsp;
+    <lightning-button variant="brand" label="Update Account" title="titleName" onclick={updateRecord}>
+    </lightning-button>
+    <lightning-datatable key-field="id" data={accList} max-row-selection="1" columns={cols}
+        onrowselection={handleRowSelection}>
+    </lightning-datatable>
+    {accList.Name}
+    <!-- <br/><center><b>New Table {accList.s}</b></center>
+    <lightning-datatable
+        key-field="id"
+        data={accList}
+        show-row-number-column
+        hide-checkbox-column
+        columns={cols}
+        onrowaction={handleRowAction}
+        onrowselection={handleRowSelection}>
+    </lightning-datatable> -->
+
+
+</template>

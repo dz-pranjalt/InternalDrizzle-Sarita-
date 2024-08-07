@@ -1,0 +1,15 @@
+<template>
+    <template for:each={sections} for:item="section">
+        <c-expandable-section key={section.id} id={section.id} label={section.label}>
+         {section.label}
+        </c-expandable-section>
+    </template>
+
+    <c-expandable-section id={section.id} label={section.label}>
+        {section.label}
+    </c-expandable-section>
+
+    <c-expandable-section id={section.id} label={section.label}>
+        {section.label}
+    </c-expandable-section>
+</template>

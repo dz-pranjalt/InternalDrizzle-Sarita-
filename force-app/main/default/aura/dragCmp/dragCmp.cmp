@@ -1,0 +1,34 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" controller='GetAccountrec' >
+    <aura:attribute name="accountwrapper" type="GetAccountrec.Accountwrapper"/>
+     <aura:attribute name="contactwrapper" type="GetAccountrec.Contactwrapper"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInIT}"/>
+    <lightning:card>
+        <lightning:layout>
+            <lightning:layoutitem size="4" padding="around-small">
+                <div class="slds-box" ondragover="{!c.allowDrop}" ondrop="{!c.onAccDrop}">
+                    <h1 style="font-size:30px;text-align:center"><b>Account Records</b></h1><br/>
+                    <aura:iteration items="{!v.accountwrapper.NewAccounts}" var="newacc">
+                        <div class="slds-box" ondragstart="{!c.dragStart}" draggable="true" id="{!newacc.Id}">
+                            <lightning:icon iconName="standard:account_info" alternativeText="Account info" title="Account Info"/>
+                            <b> Name</b> : {!newacc.Name}<br/>
+                            <b> Industry</b> : {!newacc.Industry}<br/>
+                        </div>
+                    </aura:iteration>
+                </div>
+            </lightning:layoutitem>
+             <lightning:layoutitem size="4" padding="around-small">
+                <div class="slds-box" ondragover="{!c.allowDrop}" ondrop="{!c.onConDrop}">
+                    <h1 style="font-size:30px;text-align:center"><b>Contact Records</b></h1><br/>
+                    <aura:iteration items="{!v.contactwrapper.NewContacts}" var="newconn">
+                        <div class="slds-box" ondragstart="{!c.dragStart}" draggable="true" id="{!newconn.Id}">
+                            <lightning:icon iconName="standard:contact" alternativeText="Contact info" title="Contact Info"/>
+                            <b> Last Name</b> : {!newconn.Name}<br/>
+                            <b> LeadSource</b> : {!newconn.LeadSource}<br/>
+                        </div>
+                    </aura:iteration>
+                </div>
+            </lightning:layoutitem>
+        </lightning:layout>
+    </lightning:card>
+</aura:component>

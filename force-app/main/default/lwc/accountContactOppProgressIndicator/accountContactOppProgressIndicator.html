@@ -1,0 +1,16 @@
+<template>
+    <lightning-card  variant="Narrow" >
+        <div class="slds-p-around_large">
+        <c-progress-indicator  current-step={currentStep} step-values={strpCount}></c-progress-indicator>
+            </div>  
+            <div class="slds-var-m-around_large">
+                <c-progress-new-account if:true={showAccount} onnnext={handleNext}></c-progress-new-account >
+            </div>
+            <div class="slds-var-m-around_large">
+                <c-progress-new-contact if:true={showContact} onnext={handleNext} onprevious={handlePrevious}></c-progress-new-contact> 
+            </div>
+            <div class="slds-var-m-around_large">
+                <c-progress-new-opportunity if:true={showOpportunity} onnext={handleNext} onprevious={handlePrevious}></c-progress-new-opportunity>
+            </div>
+            </lightning-card>
+</template>

@@ -1,0 +1,15 @@
+<template>
+ <lightning-card  variant="Narrow"  title="RefreshApex" icon-name="standard:account">
+    <lightning-button label="Delete" variant="brand" onclick={handleDelete}></lightning-button> &nbsp;&nbsp;
+    <lightning-button label="Update" variant="brand" onclick={handleUpdate}></lightning-button>
+    <lightning-datatable ></lightning-datatable>
+    <lightning-datatable
+        key-field="id"
+        data={conList}
+        show-row-number-column
+        columns={contactColumns}
+        max-row-selection="1"
+        onrowselection={handleSelection}>
+    </lightning-datatable>
+ </lightning-card>
+</template>

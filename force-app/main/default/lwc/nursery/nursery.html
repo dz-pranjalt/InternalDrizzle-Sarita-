@@ -1,0 +1,39 @@
+<template>
+<header class="header-layout-1">
+<nav class="navbar navbar-expand-md navbar-light fixed-top" id="navigation">
+<div class="container">
+<a class="navbar-brand" href="/food-api"><span class="greenF" style="font-size: 18px;margin-left: 10px;">spoonacular API</span></a>
+<ul class="navbar-nav ml-auto" id="main-menu">
+<li class="nav-item"><a id="section-overview" class="nav-link" href="/food-api">Overview</a></li>
+<li class="nav-item"><a id="section-docs" class="nav-link" href="/food-api/docs">Docs</a>
+<ul>
+<li><a href="/food-api/docs">Full Documentation</a></li>
+<li><a href="/food-api/faq">FAQ</a></li>
+<li><a href="/food-api/sdk">SDKs</a></li>
+<li><a href="/food-api/updates">Updates</a></li>
+</ul>
+</li>
+<li class="nav-item"><a id="section-pricing" class="nav-link" href="/food-api/pricing">Pricing</a></li>
+<li class="nav-item"><a id="section-terms" class="nav-link" href="/food-api/terms">Terms</a></li>
+<li class="nav-item"><a id="section-applications" class="nav-link" href="/food-api/apps">Applications</a></li>
+<li class="nav-item"><a id="section-console" class="nav-link download-link" href="/food-api/console">
+ Start Now
+</a></li>
+</ul>
+<div class="navbar-toggle"></div>
+<div id="responsive-menu"></div>
+</div>
+</nav>
+</header>
+    <lightning-card title="Show Map" icon-name="custom:custom4">
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+                <lightning-input type="text" label="Search" class="row" onchange={hanleChange} required="true"></lightning-input>
+            </div>
+            <div class="slds-col">
+                <lightning-button label="Search" variant="branD" onclick={hanleSearch}></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+
+</template>

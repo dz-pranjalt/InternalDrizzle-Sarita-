@@ -1,0 +1,84 @@
+<template>
+  <lightning-card title="LWC PopUp"
+    icon-name="custom:custom20">
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered"
+      aria-label="Example default base table of Opportunities">
+      <thead>
+        <tr class="slds-line-height_reset">
+          <th class="" scope="col">
+            <div class="slds-truncate" title="Opportunity Name">Lead Name</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate" title="Account Name">Lead Subject</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate" title="Close Date">Lead Title</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate" title="Stage">Lead Email</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <template for:each={apexData} for:item="acc">
+          <tr class="slds-hint-parent" key={acc.Id}>
+            <th scope="row" data-id={acc.Id} onclick={customShowModalPopup} ><div class="slds-truncate" title="Cloudhub"><a href="javascript:void(0);">{acc.Name}</a></div></th>
+            <td data-label="Lead Phone">
+              <div class="slds-truncate" title="Phone">{acc.Phone}</div>
+            </td>
+            <td data-label="Lead Title">
+              <div class="slds-truncate" title="Title">{acc.Title}</div>
+            </td>
+            <td data-label="Lead Email">
+              <div class="slds-truncate" title="Email">{acc.Email}</div>
+            </td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+    <!-- modal start -->
+    <template if:true={customFormModal}>
+      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <!-- modal header start -->
+          <header class="slds-modal__header">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+              onclick={customHideModalPopup}>
+              <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
+              </lightning-icon>
+              <span class="slds-assistive-text">Close</span>
+            </button>
+            <h2 class="slds-text-heading_medium slds-hyphenate">Custom Modal Popup in LWC</h2>
+          </header>
+          <!-- modal body start -->
+          <div class="slds-modal__content slds-p-around_medium">
+            <div class="slds-grid slds-wrap">
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--medium slds-m-bottom_medium">
+                <lightning-combobox name="progress" class="validate" label="Subject" value={value1} placeholder="Select Progress"  options={options1} onchange={handleSubject} required="true"></lightning-combobox>
+              </div>
+            <div class="slds-col slds-size_6-of-12 slds-p-horizontal--medium slds-m-bottom_medium">
+            <lightning-textarea class="validate" label="Description"  value={description} required="true" onclick={hanleddescription}>
+                </lightning-textarea>
+            </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--medium slds-m-bottom_medium">
+                <lightning-input class="validate" label="Due Date" type="date" value={DueDate} required="true" onclick={hanledDueDate}></lightning-input>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--medium slds-m-bottom_medium">
+                <lightning-combobox name="progress" class="validate" label="Status" value={value} placeholder="Select Progress"  options={options} onchange={handleStatus} required="true"></lightning-combobox>
+              </div>
+            </div>    
+            <!-- modal footer start-->
+            <footer class="slds-modal__footer">
+              <button class="slds-button slds-button--destructive" onclick={customHideModalPopup}>Cancel</button>
+              <button class="slds-button slds-button_brand" onclick={customSaveModalPopup} >Save</button>
+            </footer>
+          </div>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open">
+      </div>
+    </template>
+    <!-- modal end -->
+  </lightning-card>
+</template>

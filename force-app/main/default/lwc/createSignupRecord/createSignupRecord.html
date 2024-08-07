@@ -1,0 +1,31 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account">
+        <lightning-layout multiple-rows>
+
+            <lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6" large-device-size="3" >
+                <lightning-input name="firstName" label="Enter First Name" class="validate" type="text" required="true"  value={signupList.FirstName__c} onchange={handleFirstName}></lightning-input>
+            </lightning-layout-item>
+
+
+            <lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6" large-device-size="3">
+                <lightning-input name="email" id="clasN" class="validate" type="email" label="Enter EMail" pattern="[A-Za-z0-9._]+@[a-z0-9]+.[a-z]{2,}$" required="true"  message-when-pattern-mismatch="kindly insert valid email" value={signupList.Email__c} onchange={handleEmail}></lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6" large-device-size="3" >
+                <lightning-input name="phone" class="validate" label="Enter Phone" required="true"  type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}$" message-when-pattern-mismatch="kidly enter valid phone number" value={signupList.Phone__c} onchange={handlePhone}></lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6" large-device-size="3">
+                <lightning-input name="pincode" class="validate" label="Enter Pincode" type="number" required="true"  min="1000" max="999999" message-when-range-overflow="Please enter the max number" message-when-range-underflow="please check the min number" onchange={handlePincode} value={signupList.Pincode__c}></lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6" large-device-size="3">
+                <lightning-input name="password" class="validate" label="Enter Password" type="password" required="true"  onchange={handlePassword} value={signupList.Password__c}></lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" padding="around-small" >
+                <lightning-button label=" Sign Up" variant="brand" onclick={handleSignup}></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

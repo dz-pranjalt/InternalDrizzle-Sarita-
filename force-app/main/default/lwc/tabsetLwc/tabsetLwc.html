@@ -1,0 +1,27 @@
+<template>
+    <lightning-tabset variant="vertical" active-tab-value="two">
+        <template if:true={acclist} for:each={acclist} for:item="con" >
+            <lightning-tab key={con.Id} label={con.Name} value={con.Name}>
+                <p><b>City :-</b> {con.Name}</p>
+                <p><b>Phone :-</b>{con.Phone}</p>
+            </lightning-tab>
+        </template>
+        <!-- <lightning-tab label="Item One" onactive={handleActive}>
+            {tabcontent}
+        </lightning-tab>
+        <lightning-tab label="Item Two" value="one" onactive={handleActive}>
+            {tabcontent}
+        </lightning-tab>
+        <lightning-tab label="Item Three" value="two" onactive={handleActive}>
+            {tabcontent}
+        </lightning-tab>
+        <template if:true={showTabFour}>
+            <lightning-tab label="Item Four" value="three" onactive={handleActive}>
+                {tabcontent}
+            </lightning-tab>
+        </template> -->
+    </lightning-tabset>
+
+    <lightning-button label="Toggle Optional Tab" onclick={toggleOptionalTab} ></lightning-button>
+    
+</template>

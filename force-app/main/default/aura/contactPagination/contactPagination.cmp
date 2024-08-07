@@ -1,0 +1,61 @@
+<aura:component controller="contactPagination" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:attribute name="ContactList" type="Contact[]"/>
+    <aura:attribute name="PageNumber" type="integer" default="1"/>
+    <aura:attribute name="TotalPages" type="integer" default="0"/>
+    <aura:attribute name="TotalRecords" type="integer" default="0"/>
+    <aura:attribute name="RecordStart" type="integer" default="0"/>
+    <aura:attribute name="RecordEnd" type="integer" default="0"/>
+    
+    <div class="slds-float_right slds-p-right_large">
+        <ui:inputSelect aura:id="pageSize" label="Select Number to Display Records Per Page: " change="{!c.onSelectChange}">
+            <ui:inputSelectOption text="5" label="5" value="true"/>
+            <ui:inputSelectOption text="10" label="10"/>
+            <ui:inputSelectOption text="15" label="15"/>
+            <ui:inputSelectOption text="20" label="20"/>
+        </ui:inputSelect>
+        <br/>
+    </div>
+    <p class="slds-page-header__title">Total Record {!v.TotalRecords} | Page {!v.PageNumber} of {!v.TotalPages}</p>
+    
+    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th scope="col">
+                    <strong><div class="slds-truncate" title="Name">Name</div></strong>
+                </th>
+                <th scope="col">
+                    <strong><div class="slds-truncate" title="Phone">Phone</div></strong>
+                </th>
+                <th scope="col">
+                    <strong><div class="slds-truncate" title="Email">Email</div></strong>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.ContactList}" var="con"> 
+                <tr>
+                    <th scope="row" data-label="Name">
+                        <a href=" "><div class="slds-truncate" title="{!con.Name}">{!con.Name}</div></a>
+                    </th>
+                    <th scope="row" data-label="Phone">
+                        <div class="slds-truncate" title="{!con.Phone}">{!con.Phone}</div>
+                    </th>
+                    <th scope="row" data-label="Email">
+                        <div class="slds-truncate" title="{!con.Email}">{!con.Email}</div>
+                    </th>
+                </tr>
+            </aura:iteration> 
+        </tbody>
+    </table>
+    <div class="slds-clearfix">
+        <div class="slds-page-header" role="banner">
+            <div class="slds-float_right">            
+                <lightning:button disabled="{!v.PageNumber == 1}" variant="brand" aura:id="prevPage" label="Prev" onclick="{!c.handlePrev}" />            
+                <lightning:button disabled="{!v.PageNumber == v.TotalPages}" aura:id="nextPage" variant="brand" label="Next" onclick="{!c.handleNext}"/>
+            </div>
+        </div>
+    </div>
+</aura:component>

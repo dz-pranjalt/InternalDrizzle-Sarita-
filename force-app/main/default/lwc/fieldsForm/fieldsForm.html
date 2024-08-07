@@ -1,0 +1,57 @@
+<template>
+    <div class="slds-p-around_medium slds-m-around_medium">
+        <lightning-card title="Custom Validation" icon-name="custom:custom5">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item padding="around_small" size="12" medium-device-size="6" large-device-size="6">
+                    <lightning-input name="firstName" class="validate slds-m-right_small" type="text" label="First Name"
+                        disabled={isDisable} value={fieldsList.Name} required ondblclick={handleName}></lightning-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <template if:true={isLastName}>
+                    <lightning-input name="password" class="validate slds-m-right_small" type="password" label="passWord"
+                        disabled={isDisable} required onclick={handlePassword}></lightning-input></template>
+
+                        <template if:true={isCompany}>
+                    <lightning-input name="email" class="validate slds-m-right_small" type="email" label="Email" disabled={isDisable}
+                        pattern="[A-Za-z0-9,_,]+@[a-z0-9]+.[a-z]{2,}$" required onclick={handleEmail}
+                        message-when-pattern-mismatch="Please enter valid email"></lightning-input></template>
+                    
+                   
+                        <template if:true={isPhone}>
+                    <lightning-combobox name="status" class="validate slds-m-right_small" label="Lead Status" value={value} options={leadPickList.data.values}
+                        disabled={isDisable} required onclick={handleValidation}></lightning-combobox></template>
+                   
+
+                </lightning-layout-item>
+
+                <lightning-layout-item padding="around_small" size="12" medium-device-size="6" large-device-size="6">
+                    <template if:true={isNameval}>
+                    <lightning-input name="last" class="validate slds-m-right_small" type="text" label="Last Name" disabled={isDisable} value={fieldsList.Company}
+                        required onclick={handleLastName}></lightning-input></template>
+
+                        <template if:true={isPass}>
+                        <lightning-input name="company" class="validate slds-m-right_small" type="text" label="Company Name"
+                        disabled={isDisable} required onclick={handleCompany}></lightning-input></template>
+
+                        <template if:true={ispickSelect}>
+                        <lightning-input name="pincode" class="validate slds-m-right_small" type="number" label="Pin Code" disabled={isDisable}
+                        required min="1423" max="999999" message-when-range-overflow="Please enter correct pincode" onclick={handlePincode}
+                        message-when-range-underflow="Please enter correct pincode"></lightning-input></template>
+                   
+                        <template if:true={isEmail}>
+                        <lightning-input name="phone" class="validate slds-m-right_small" type="phone" label="phone" disabled={isDisable}
+                        required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={fieldsList.Phone} onclick={handlePhone}></lightning-input></template>
+                    
+
+                </lightning-layout-item><br />
+
+                <lightning-layout-item size="12" class="slds-var-p-top_smal">
+                    <lightning-button  label="Save" onclick={handleValidation}>
+                    </lightning-button>
+                    <lightning-button  class="slds-m-left_x-small" label="Cancel" type="submit"></lightning-button>
+                    <!-- <lightning-button class="slds-align_absolute-center" label="Cancel" onclick={handleValidation}>
+                    </lightning-button> -->
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-card>
+    </div>
+</template>

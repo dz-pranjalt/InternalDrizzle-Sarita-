@@ -1,0 +1,31 @@
+<template>
+    <lightning-card variant="Narrow" title="LDS" icon-name="standard:account">
+        <div>
+            Object APi Name :- {objectApiName}<br />
+            Record Id :- {recordId}<br />
+
+            <b>Record Form with fields</b><br />
+            <div class="slds-p-around_small">
+                <lightning-record-form object-api-name={objectApiName} record-id={recordId} fields={fields}
+                    onsubmit={handleSubmit} onsuccess={handleSuccess} onerror={handleError}>
+                </lightning-record-form>
+                <br />
+
+
+                <b>Record Edit Form With Input Field</b><br />
+                <lightning-record-edit-form object-api-name={objectApiName} record-id={recordId}>
+                    <lightning-input-field field-name="Name"></lightning-input-field>
+                    <lightning-input-field field-name="Email"></lightning-input-field>
+                </lightning-record-edit-form><br/>
+
+                <b>Record View Form With OutPut Field</b><br />
+                <lightning-record-view-form object-api-name={objectApiName} record-id={recordId}>
+                    <lightning-output-field field-name="Name"></lightning-output-field>
+                    <lightning-output-field field-name="Email"></lightning-output-field>
+                </lightning-record-view-form>
+            </div>
+        </div>
+    </lightning-card>
+
+
+</template>

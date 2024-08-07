@@ -1,0 +1,12 @@
+.THIS {
+}
+
+.THIS .slds-section__title{
+    /*background-color: YellowGreen;*/
+    color: white
+}
+.THIS .slds-modal__header{
+    background-color: OliveDrab;
+    color: white;
+    font-size : 1rem;
+}

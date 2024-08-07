@@ -1,0 +1,11 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+	<div class="slds-align_absolute-center" >
+
+            <p><b>1.Why does RO water have Foul Odour or Bad Taste of Water?</b></p><br></br>
+            <p><b>Solution</b>:Replace the filters on time, keep the storage tank clean and discard all purified water if left unused for more than 2 days.</p><br/><br/>
+ </div>
+              <p><b>2.When the water storage tank of the RO fills over a defined level, then it automatically shuts off the purification process.</b></p><br/>
+              &nbsp;&nbsp;<p><b>Solution</b>: Call an RO technician who will repair or replace the faulty part.
+              </p><br/><br/>
+       
+</aura:component>

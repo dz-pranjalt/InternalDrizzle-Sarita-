@@ -1,0 +1,8 @@
+<aura:component >
+	<aura:attribute name="str" type="string" default="Hello World!"/>
+    <ui:outputText value="Enter a string value : "/><ui:inputText value="{!v.str}"/>
+    <br/><br/>   
+    Unbound Expression :<ui:outputText value="{#v.str}"/>
+    <br/><br/>
+  Bound Expression :<ui:outputText value="{!v.str}"/>
+</aura:component>

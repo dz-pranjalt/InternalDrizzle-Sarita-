@@ -1,0 +1,26 @@
+<template>
+    <div class="slds-p-around_small"> 
+        <!-- <template if:true={getObjectData.data}>
+         {getObjectData.data}
+
+        </template> -->
+      <lightning-button variant="brand" label="Get Object Data" title="titleName" onclick={handleClick}></lightning-button><br/>
+      <lightning-combobox
+        name="progress"
+        label="Static Picklist"
+        value={value}
+        placeholder="Select Progress"
+        options={options}
+        onchange={handleChange} ></lightning-combobox><br/>
+
+        <lightning-combobox
+        name="progress"
+        label="Dynamic Picklist"
+        value={value}
+        placeholder="Select Progress"
+        options={options2}
+        onchange={handleChange1} ></lightning-combobox>
+
+
+    </div>
+</template>

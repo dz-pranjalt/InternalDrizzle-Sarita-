@@ -1,0 +1,8 @@
+<template>
+    <lightning-card title="Insert Contact" icon-name="custom:custom7">
+        <lightning-input label="Name" class="acc" type="text" value={accFields.Name} onchange={handleName} required="true"></lightning-input>
+        <lightning-input label="Phone" class="acc" type="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={accFields.Phone} onchange={handlePhone} required="true"></lightning-input>
+        <lightning-button label="Save" variant="brand" onclick={handleSubmit}></lightning-button>
+    </lightning-card>
+    
+</template>

@@ -1,0 +1,8 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account">
+        <lightning-input type="number" variant="standard" name="name1" label="Enter first value" onchange={handleChange}></lightning-input> <br></br>
+        <lightning-input type="number" variant="standard" name="name2" label="Enter second value" onchange={handleChange}></lightning-input><br></br>
+        <!-- <lightning-button variant="base" label="Get Sum" title="sum" onclick={handleClick}></lightning-button> -->
+        <b>The sum of Numbers using getter are {showSum}</b>
+    </lightning-card>
+</template>

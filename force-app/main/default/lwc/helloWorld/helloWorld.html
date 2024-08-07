@@ -1,0 +1,15 @@
+<template>
+  <!-- <lightning-card title="HelloWorld" icon-name="custom:custom14">
+    <div class="slds-m-around_medium">
+      <p>Hello, {greeting}!</p>
+      <lightning-input label="Name" value={greeting} onchange={changeHandler}></lightning-input>
+    </div>
+  </lightning-card> -->
+
+  <div>
+    <lightning-input type="text" variant="standard" name="name" label="Principle" placeholder="type here..."></lightning-input>
+    <lightning-input type="number" value={num} formatter="percent-fixed" step="1"  label="Rate interest" ></lightning-input>
+    <lightning-input type="text" variant="standard" name="name" label="Interest" placeholder="type here..."></lightning-input>
+    <lightning-input type="number" formatter="percent-fixed" step="1" label="new formatter"></lightning-input>
+  </div>
+</template>

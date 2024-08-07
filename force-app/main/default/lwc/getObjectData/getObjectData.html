@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title={objectApiName}>
+        <template if:true={data}>
+            <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}>
+            </lightning-datatable>
+        </template>
+        <template if:true={error}>
+            <p class="slds-text-color_error">{error}</p>
+        </template>
+    </lightning-card>
+</template>

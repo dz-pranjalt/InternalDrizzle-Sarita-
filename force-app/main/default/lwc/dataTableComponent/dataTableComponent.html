@@ -1,0 +1,20 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Data Table" icon-name="standard:contact">
+        <div class="slds-p-around_large">
+            <lightning-datatable
+        key-field="id"
+        data={contactData}
+        sorted-by={sortBy}
+        onsort={handlertData}
+        sorted-direction={sortedDirection}
+        columns={columnList}
+        draft-values={draftValues}
+        onsave={handleSave}
+        onrowaction={handleRowAction}>
+    </lightning-datatable>
+        </div>
+        <!-- key-field="Id" data={records} columns={columns} onsave={handleSave}
+        draft-values={saveDraftValues} show-row-number-column onrowselection={handleSelection}  selected-rows={selectedRows} -->
+    </lightning-card>
+    
+</template>

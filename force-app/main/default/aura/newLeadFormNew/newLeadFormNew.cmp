@@ -1,0 +1,47 @@
+<aura:component controller="getLeadData" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="accountList" type="Lead[]"/>
+    <aura:attribute name="LeadId" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+     <!--<aura:registerEvent name="lookupEvent" type="c:lookupEvent"/>-->
+    <aura:registerEvent name="lookupEvent" type="c:lookupEvent"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped" aria-label="Example table of Opportunities with striped rows">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Accounr Name">Account Name</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Account Name">Account Phone</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Account Email">Account Email</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Account CreatedDate">Account CreatedDate</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.accountList}" var="acc"> 
+            <tr class="slds-hint-parent" >
+                
+                <td data-label="Account Name" name="popover" data-id="{!acc.Id}" onmouseover="{!c.handleShowPopover}">
+                    <a href="0" ><div class="slds-truncate" title="AccountName">{!acc.Name}</div></a>
+                </td>
+                <td data-label="Close Date">
+                    <div class="slds-truncate" title="AccountPhone">{!acc.Phone}</div>
+                </td>
+                <td data-label="Prospecting">
+                    <div class="slds-truncate" title="AccountEMail">{!acc.Email}</div>
+                </td>
+                <td data-label="Confidence">
+                    <div class="slds-truncate" title="AccountDate">{!acc.CreatedDate}</div>
+                </td>
+            </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+    <lightning:button name="popover" label="Show Popover" onclick="{!c.handleShowPopover}"/>
+    <div class="mypopover" onmouseover="{!c.handleShowPopover}"></div> 
+</aura:component>

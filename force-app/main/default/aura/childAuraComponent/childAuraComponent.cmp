@@ -1,0 +1,16 @@
+<aura:component >
+    <aura:registerEvent name="childEvt" type="c:AuraEvent"/>
+    <aura:attribute name="firstName" type="String" ></aura:attribute>
+    <aura:attribute name="inputVal" type="String" ></aura:attribute>
+    <ui:button label="ChildEvent" press="{!c.childFire}"></ui:button>
+    <lightning:input class="slds-p-around_large" label="Enter Value" aura:id="inpuId" value="{!v.firstName}" onchange="{!c.handleChange}"></lightning:input>
+    <!--<lightning:button onclick="" press=""></lightning:button>-->
+</aura:component>
+
+
+<!--
+  the component from which we are passing value there we need to "register" event
+  <aura:registerEvent name="childEvt" type="c:AuraEvent"></aura:registerEvent>
+onclick,onblure,onkeyup="{!c.methodName}"
+
+-->

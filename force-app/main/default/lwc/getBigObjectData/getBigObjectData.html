@@ -1,0 +1,17 @@
+<template>
+    <div if:true={showSpinner}>
+        <lightning-spinner alternative-text="alternativeText" size="small"> </lightning-spinner>
+    </div>
+    <lightning-card if:false={showSpinner} title="Account List">
+        <div class="resizable-table slds-scrollable_x slds-scrollable_y">
+            <lightning-datatable
+                key-field="Id"
+                data={currentPageRecords}
+                columns={columns}
+                show-row-number-column="true"
+                onrowaction={handleRowAction}
+                onrowselection={handleRowSelection}
+            ></lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,8 @@
+<template>
+    <lightning-card  variant="Narrow"  title="DisconnectCallback" icon-name="standard:account">
+       <template if:true={isShow}>
+            <c-getter-setter-demo></c-getter-setter-demo>
+       </template>
+       <lightning-button variant="success" label="ClickDisconnect" title="titleName" onclick={handleClick}></lightning-button>
+    </lightning-card>
+</template>

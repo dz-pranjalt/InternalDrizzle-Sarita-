@@ -1,0 +1,28 @@
+<template>
+    <lightning-card variant="Narrow" title="Employee Form" icon-name="standard:account">
+        <lightning-layout multiple-rows >
+            <lightning-layout-item padding="around_small" size="12" medium-device-size="6" large-device-size="6">
+                <lightning-input name="last" class="validate" type="text" label="Employee Address" disabled={isDisable}
+                    required value={address} onchange={handleChange}></lightning-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <lightning-input name="DOB" class="validate" type="date" label="Employee DOB" disabled={isDisable}
+                    required value={dateValue}  readonly="true"></lightning-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <lightning-combobox
+                        name="progress"
+                        label="Select blood group"
+                        value={value}
+                        placeholder="Select Progress"
+                        options={options}
+                        onchange={handleChange} ></lightning-combobox>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around_small" size="12" medium-device-size="6" large-device-size="6">
+                <lightning-input name="phone" class="validate" type="phone" label="Employee phone" disabled={isDisable}
+                    required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={phone} onchange={handleChange}></lightning-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <lightning-input name="email" class="validate" type="email" label="Employee Email" disabled={isDisable}
+                    pattern="[A-Za-z0-9,_,]+@[a-z0-9]+.[a-z]{2,}$" required
+                    message-when-pattern-mismatch="Please enter valid email" value={emilId} onchange={handleChange}></lightning-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </lightning-layout-item>
+           <div class="slds-align_absolute-center" style="height:5rem">
+            <lightning-button variant="brand" label="Create Employee Records" title="empRecord" onclick={handleEmployee}></lightning-button></div>
+        </lightning-layout>
+    </lightning-card>
+</template>

@@ -1,0 +1,14 @@
+<template>
+    <template if:true={isActiv}>
+    <c-evt-child></c-evt-child>
+</template>
+    <!-- <lightning-button variant="brand" label="ClickMe" title="titleName" onclick={handleClick}></lightning-button>
+    <lightning-input type="number" value={val} variant="standard" name="name" label="Enter name"  onchange={handleChange} onblur={handleBlur} onfocus={handleFocus}> </lightning-input> -->
+   
+    <lightning-input  value={val1} variant="standard" name="name" label="Enter first number"  onchange={handleNum} > </lightning-input>
+    <lightning-input  value={Val2} variant="standard" name="name1" label="Enter second number"   onchange={handleNum}> </lightning-input><br/>&nbsp;
+    
+    <lightning-button variant="brand" label="ClickMe" title="titleName" onclick={handleClick}></lightning-button> <br/>
+        
+    Addition is :- {numSum}
+</template>

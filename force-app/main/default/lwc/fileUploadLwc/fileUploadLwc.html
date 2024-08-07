@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="File Uploader">
+        <lightning-file-upload
+            label="Upload Files"
+            accept=".pdf, .png, .jpg"
+            record-id={recordId}
+            multiple
+            onuploadfinished={handleUploadFinished}>
+        </lightning-file-upload>
+        <template for:each={uploadedFiles} for:item="file" for:index="index">
+            <div key={file.Id}>
+                <p>{file.Title}</p>
+                <lightning-button
+                    label="Delete"
+                    variant="destructive"
+                    data-file-id={file.Id}
+                    onclick={deleteFile}>
+                </lightning-button>
+            </div>
+        </template>
+    </lightning-card>
+</template>

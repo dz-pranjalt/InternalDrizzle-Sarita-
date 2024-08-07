@@ -1,0 +1,48 @@
+<template>
+    <div class="slds-p-around_medium slds-align_absolute-center ">
+    <div class="slds-p-bottom_xx-small bg">
+        <img src={bg} class="slds-p-bottom_xx-small"><br/>
+        <lightning-card title="Event Registration" icon-name="custom:custom5">
+
+
+        <lightning-layout multiple-rows>
+            <lightning-layout-item padding="around-small" size="12" medium-device-size="6" large-device-size="6">
+                <lightning-input name="firstName" class="validate" type="text" label="First Name" disabled={isDisabled}
+                    required onchange={handleName} value={signUpList.FirstName__c}></lightning-input>
+                <lightning-input name="password" class="validate" type="password" label="Password" disabled={isDisabled}
+                    required onchange={handlePassword} value={signUpList.Password__c}></lightning-input>
+                <lightning-input name="email" class="validate" type="email" label="Email"
+                    pattern="[A-Za-z0-9._-]+@[a-z0-9-]+.[a-z]{2,}$"
+                    message-when-pattern-mismatch="Please enter a valid email" disabled={isDisabled} required onchange={handleEmail} value={signUpList.Email__c}>
+                </lightning-input>
+                <lightning-combobox name="country" class="validate" label="Country" options={countryOptions}
+                    disabled={isDisabled} required onchange={handleCountry} value={signUpList.Country__c}></lightning-combobox>
+            </lightning-layout-item>
+
+
+            <lightning-layout-item padding="around-small" size="12" medium-device-size="6" large-device-size="6">
+                <lightning-input name="lastName" class="validate" type="text" label="Last Name" disabled={isDisabled}
+                    required onchange={handleLastName} value={signUpList.LastName__c}></lightning-input>
+                <lightning-input name="company" class="validate" type="text" label="Company" disabled={isDisabled}
+                    required onchange={handleCompany} value={signUpList.Company__c}></lightning-input>
+                <lightning-input name="phone" class="validate" type="tel" label="Phone"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}$" message-when-pattern-mismatch="Please enter a valid phone number" value ={signUpList.Phone__c} disabled={isDisabled} required onchange={handlePhone}>
+                </lightning-input>
+                <lightning-input name="pincode" class="validate" type="number" label="Pin Code" min="1000" max="999999"
+                    message-when-range-overflow="Please enter a correct pincode" value={signUpList.Pincode__c}
+                    message-when-range-underflow="Please enter a correct pincode" disabled={isDisabled} onchange={handlePincode}>
+                </lightning-input>
+            </lightning-layout-item>
+
+
+            <lightning-layout-item size="12" class="slds-var-p-top_small">
+                <lightning-button class="slds-align_absolute-center" label="Sign Up" onclick={signUp}>
+                </lightning-button>
+            </lightning-layout-item>
+
+
+        </lightning-layout>
+  </lightning-card>
+    </div>
+</div>
+</template>

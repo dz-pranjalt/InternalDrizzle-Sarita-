@@ -1,0 +1,20 @@
+<template>
+    <div class="slds-p-around_large slds-m-around_large">
+    <lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account">
+        <template if:true={hasApex}>
+            hasApex :  {hasApex} &nbsp;  
+              <lightning-button variant="neutral" label="Apex Permision"  onclick={handleClick}></lightning-button>
+        </template>&nbsp;&nbsp;
+
+        <template if:true={hasEditTask}> 
+            hasEditTask :  {hasEditTask}   &nbsp;
+            <lightning-button variant="neutral" label="Edit Task Permision"  onclick={handleClick}></lightning-button>
+      </template>&nbsp;&nbsp;
+
+      <template if:true={hasModify}>     
+        <lightning-button variant="neutral" label="Modify Data"  onclick={handleClick}></lightning-button>
+  </template>&nbsp;&nbsp;
+
+        </lightning-card>
+    </div>
+</template>

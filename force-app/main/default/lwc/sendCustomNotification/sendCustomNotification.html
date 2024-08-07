@@ -1,0 +1,11 @@
+<template>
+    <lightning-input type="text" label="Enter Notification Title" onchange={handleTitle}></lightning-input>
+    <lightning-input type="text" label="Enter Notification Body" onchange={handleBody}></lightning-input>
+    <template if:true={showNotificationTypePicklist}>
+        <lightning-combobox name="notificationtype" label="Select Notification Type"
+        options={notificationOptions} onchange={handleNotificationTypeChange}></lightning-combobox>
+    </template>
+    <div class="slds-m-vertical_medium">
+        <lightning-button variant="brand" label="Send Notification" title="Send Custom Notification" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+    </div>
+</template>

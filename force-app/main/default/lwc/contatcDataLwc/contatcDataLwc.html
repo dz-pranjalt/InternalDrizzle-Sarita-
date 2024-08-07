@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Insert Lwc Contact" icon-name="custom:custom8">
+        <lightning-input type="text" label="Contact Last Name" class="lastName" value={contactRec.LastName}
+            onchange={hanleLastName}></lightning-input>
+        <lightning-input type="phone" label="Contact Phone Number" class="phone" value={contactRec.Phone}
+            onchange={hanlePhone}></lightning-input>
+        <lightning-input type="text" label="Contact Email" class="email" value={contactRec.Email} onchange={hanleEmail}>
+        </lightning-input>
+        <lightning-input type="title" label="Contact Title" value={contactRec.Title} onchange={hanleTitle}>
+        </lightning-input>
+        <lightning-button label="submit" variant="brand" onclick={hanleSubmit}></lightning-button>
+    </lightning-card>
+
+</template>

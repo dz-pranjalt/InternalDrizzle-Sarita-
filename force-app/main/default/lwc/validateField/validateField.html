@@ -1,0 +1,39 @@
+<template>
+    <div class="slds-p-around_medium slds-m-around_medium">
+        <lightning-card title="Custom Validation" icon-name="custom:custom5">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item padding="around_small" size="12" medium-device-size="6" large-device-size="6">
+                    <lightning-input name="firstName" class="validate slds-m-right_small" type="text" label="First Name"
+                        disabled={isDisable} required></lightning-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <lightning-input name="password" class="validate" type="password" label="passWord"
+                        disabled={isDisable} required></lightning-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <lightning-input name="email" class="validate" type="email" label="Email" disabled={isDisable}
+                        pattern="[A-Za-z0-9,_,]+@[a-z0-9]+.[a-z]{2,}$" required
+                        message-when-pattern-mismatch="Please enter valid email"></lightning-input>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <lightning-combobox name="country" class="validate" label="Country" options={counOptions}
+                        disabled={isDisable} required></lightning-combobox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </lightning-layout-item>
+
+                <lightning-layout-item padding="around_small" size="12" medium-device-size="6" large-device-size="6">
+                    <lightning-input name="last" class="validate" type="text" label="Last Name" disabled={isDisable}
+                        required></lightning-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <lightning-input name="company" class="validate" type="text" label="Company Name"
+                        disabled={isDisable} required></lightning-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <lightning-input name="pincode" class="validate" type="number" label="Pin Code" disabled={isDisable}
+                        required min="1423" max="999999" message-when-range-overflow="Please enter correct pincode"
+                        message-when-range-underflow="Please enter correct pincode"></lightning-input>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <lightning-input name="phone" class="validate" type="phone" label="phone" disabled={isDisable}
+                        required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"></lightning-input>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </lightning-layout-item><br />
+
+                <lightning-layout-item size="12" class="slds-var-p-top_smal">
+                    <lightning-button class="slds-align_absolute-center" label="SignUp" onclick={handleValidation}>
+                    </lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-card>
+    </div>
+</template>

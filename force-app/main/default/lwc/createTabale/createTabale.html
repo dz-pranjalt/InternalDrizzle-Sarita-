@@ -1,0 +1,54 @@
+<template>
+    <div class="slds-p-around_medium">
+        <lightning-input label="Search" name="search" value={searchAcc} onchange={handleChange}></lightning-input>
+        <!--<lightning-button label="Search" name="search" variant="brand" onclick={handleClick}></lightning-button>-->
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered"
+            aria-labelledby="element-with-table-label other-element-with-table-label">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Opportunity Name">Account Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Account Name">Account Type</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Close Date">Account Phone</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Close Date">Action</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={accountData} for:item="acc">
+                    <tr key={acc.Id} class="slds-hint-parent">
+                        <th data-label="Account Name" scope="row">
+                            <div class="slds-truncate" title="Cloudhub">
+                                <a href="#" tabindex="-1">{acc.Name}</a>
+                            </div>
+                        </th>
+                        <td data-label="Account Email">
+                            <div class="slds-truncate" title="Cloudhub">{acc.Type}</div>
+                        </td>
+                        <td data-label="Account Phone">
+                            <div class="slds-truncate" title="4/14/2015">{acc.Phone}</div>
+                        </td>
+                        <td data-label="Account Phone">
+                            <div class="slds-truncate" title="4/14/2015"><lightning-button label="Delete" variant="brand" name="delete"></lightning-button></div>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+    <div class="slds-p-around_medium">
+        <template if:true={searchList}>
+            <template for:each={searchList} for:item="acc">
+                <p key={acc.Id}> Account Data :- {acc.Name}</p>
+            </template>
+        </template>
+       M :-{msg}
+        
+    </div>
+</template>

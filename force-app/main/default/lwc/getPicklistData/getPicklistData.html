@@ -1,0 +1,6 @@
+<template>
+    <template if:true={accountPickList.data}>
+    <lightning-combobox name="RatingPicklist" label="Rating" value={value} options={accountPickList.data.values} onchange={hanleChange}></lightning-combobox>
+</template>
+<p>Select value =:{value}</p>
+</template>

@@ -1,0 +1,18 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="Name" type="String"></aura:attribute>
+    <aura:attribute name="email" type="String"></aura:attribute>
+    
+    <div class="slds-p-around_medium slds-grid slds-text-align_center slds-container_center">
+        <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+            <lightning:input aura:id="name" label="Enater Name" type="text" required="true" name="name" value="{!v.Name}" onchange="{!c.handleChangeName}"/>
+            <lightning:select aura:Id="pickValues" label="Status" onchange="{!c.onChange}">
+                <option value="New">New</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Finished">Finished</option>
+            </lightning:select>
+            <lightning:input aura:id="email" label="Enter Email" type="Email" required="true" name="email" value="{!v.email}" onchange="{!c.handleChangeEmail}"/>
+            
+            <lightning:button class="slds-align_center" label="Submit" name="submit" variant="brand" onclick="{!c.handleSubmit}"></lightning:button>
+        </div>
+    </div>
+</aura:component>

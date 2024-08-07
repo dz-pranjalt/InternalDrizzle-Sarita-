@@ -1,0 +1,11 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account">
+        <div class="slds-m-around_small">
+            <lightning-input type="text" variant="standard" name="first" label="First Name" value={contsctList.First_Name} placeholder="type here..." onchange={handleInput}></lightning-input>
+            <lightning-input type="text" variant="standard" name="last" label="Last Name" value={contsctList.Last_name} placeholder="type here..." onchange={handleInput}></lightning-input>
+            <lightning-input type="text" variant="standard" name="email" label="Email" value={contsctList.Email} placeholder="type here..." onchange={handleInput}></lightning-input><br/>
+
+            <lightning-button variant="brand" label="Update UI Record" title="titleName" onclick={handleUpdate}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

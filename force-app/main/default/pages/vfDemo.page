@@ -1,0 +1,26 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 11-16-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<apex:page >
+<script>
+    $Lightning.use("c:lwcApplication",    // name of the Lightning app
+        function() {                  // Callback once framework and app loaded
+            $Lightning.createComponent(
+                "c:contactList", // top-level component of your app
+                { 
+                    objectApiName : "Case",
+                    fieldApiName : "Subject",
+                    iconname : "standard:case"
+                },                  // attributes to set on the component when created
+                "lightningLocator",   // the DOM location to insert the component
+                function(cmp) {
+                }
+            );
+        }
+    );
+</script>
+</apex:page>

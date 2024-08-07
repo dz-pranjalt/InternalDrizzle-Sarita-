@@ -1,0 +1,21 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <!-- Attributes -->
+    <aura:attribute name="accountId" type="Id" default=""/>
+    <!-- Event Handler -->
+    <aura:handler name="lookupEvent" event="c:lookupEvent" action="{!c.handleComponentEvent}"/>
+    <lightning:card title="Account Lookup">
+        <div class="slds-p-around_small">
+            <div class="slds-text-align_center slds-container_center slds-size_2-of-3 slds-align_absolute-center slds-p-bottom_small" style="font-size: 15px;">
+                <c:createLog
+                             name="accountLookup"
+                             fieldLabel="Account"
+                             childObjectApiName="Contact"
+                             targetFieldApiName="AccountId"
+                             value="{!v.accountId}"
+                             required="true"
+                             addToRecent="true"/>
+            </div>
+            <p><strong>Id of the selected Account: <span style="font-weight: bold">{!v.accountId}</span></strong></p>
+        </div>          
+    </lightning:card>
+</aura:component>

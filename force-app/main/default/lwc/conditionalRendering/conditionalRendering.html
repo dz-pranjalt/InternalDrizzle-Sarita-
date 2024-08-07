@@ -1,0 +1,11 @@
+<template>
+    <template if:true={isTom}>
+    <img src="https://i.pinimg.com/736x/aa/2e/f0/aa2ef0ac37db19de28da92aa1b297ca6.jpg" 
+width="200" height="200">
+</template>
+<template if:true={isJerry}>
+<img src="https://drawinghowtos.com/wp-content/uploads/2021/11/Jerry-colored.png" width="200" height="200">
+</template>
+<lightning-button label="showTom" variant="brand" onclick={hanleTom}></lightning-button> &nbsp;&nbsp;
+<lightning-button label="showJerry" variant="brand" onclick={hanleJerry}></lightning-button>
+</template>

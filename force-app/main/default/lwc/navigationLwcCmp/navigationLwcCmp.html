@@ -1,0 +1,34 @@
+<template>
+  <lightning-card title="Navigations session ">
+    <lightning-layout> 
+        <lightning-layout-item>   
+ <lightning-button variant="brand" label="View Account" title="titleName" onclick={handleViewAccount}></lightning-button>&nbsp;&nbsp;&nbsp;
+  <lightning-button variant="brand" label="New Account" title="titleName" onclick={handleNewAccount}></lightning-button>&nbsp;&nbsp;&nbsp;
+  <lightning-button variant="brand" label="Edit Account" title="titleName" onclick={handleEditAccount}></lightning-button>&nbsp;&nbsp;&nbsp;<br/><br/>
+
+</lightning-layout-item> <br/>
+<lightning-layout-item>
+  
+  <lightning-button variant="brand" label="View Account List View" title="titleName" onclick={handleListViewAccount}></lightning-button>&nbsp;&nbsp;&nbsp;
+  <lightning-button variant="brand" label="View Account Related List" title="titleName" onclick={handleRelatedListAccount}></lightning-button>&nbsp;&nbsp;&nbsp;
+</lightning-layout-item><br/>
+<lightning-layout-item>
+  <lightning-button variant="brand" label="Navigate To Account HomePage" title="titleName" onclick={handleHomeAccount}></lightning-button>&nbsp;&nbsp;&nbsp;<br/><br/>
+  <lightning-button variant="brand" label="Navigate To  Contact HomePage" title="titleName" onclick={handleContactHome}></lightning-button>&nbsp;&nbsp;&nbsp;
+</lightning-layout-item>
+
+<lightning-button variant="brand" label="Navigate To Component" onclick={handleCmp}></lightning-button>&nbsp;&nbsp;
+<lightning-button variant="brand" label="Navigate To Chatter" onclick={handleChatter}></lightning-button><br/><br/>
+<lightning-button variant="brand" label="Navigate To Report" onclick={handleReport}></lightning-button>&nbsp;&nbsp;
+<lightning-button variant="brand" label="Navigate To File" onclick={handleFile}></lightning-button>
+
+<lightning-button variant="brand" label="Navigate To WebPage" onclick={handleWeb}></lightning-button>
+<lightning-button variant="brand" label="Navigate To CustomTab" onclick={handleCustomeTab}></lightning-button>
+<!-- <lightning-button variant="brand" label="Navigate To File" onclick={handleFile}></lightning-button> -->
+
+
+
+</lightning-layout>
+
+  </lightning-card>
+</template>

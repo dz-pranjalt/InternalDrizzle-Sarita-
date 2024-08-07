@@ -1,0 +1,3 @@
+<aura:component>
+    <c:lwcAura onsample="{!c.doHandle}" ></c:lwcAura>
+</aura:component>

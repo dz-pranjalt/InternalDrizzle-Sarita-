@@ -1,0 +1,14 @@
+<aura:component >
+    <aura:handler name="childEvt" event="c:AuraEvent" action="{!c.handlerMethods}"></aura:handler>
+    <aura:attribute name="childValue" type="String" ></aura:attribute>
+    <c:childAuraComponent></c:childAuraComponent>
+    
+    Value From Child :-   {!v.childValue}
+</aura:component>
+
+
+<!--
+To access value in component there we need to handle event value-
+register event Name and Handler Event name must be same
+<aura:handler name="childEvt" event="c:AuraEvent" action="{!c.handlerMethods}"/>
+-->

@@ -1,0 +1,9 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Get Account Record" icon-name="standard:account" class="slds-p-around_small">
+        <template if:true={accList.data}>
+            <template for:each={accList.data} for:item="acc" for:index="accI">
+                Index Is :-{accI}<p key={acc.Id}>{acc.Name}</p>&nbsp;<p key={acc.Id}>{acc.Phone}</p>&nbsp;
+            </template><br/>
+        </template>
+    </lightning-card>
+</template>

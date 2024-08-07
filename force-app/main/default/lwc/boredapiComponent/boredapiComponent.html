@@ -1,0 +1,21 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account" class="slds-m_around-small">
+         <div class="slds-p-around_medium">
+            <template if:true={apiData}>
+                <p><strong>Activity: </strong>{apiData.activity}</p><br/> 
+                 <p><strong>Type: </strong>{apiData.type}</p><br/> 
+                  <p><strong>Participants: </strong>{apiData.participants}</p><br/> 
+                   <p><strong>Price: </strong>{apiData.price}</p><br/> 
+                    <p><strong>Link: </strong>{apiData.link}</p><br/> 
+                     <p><strong>Key: </strong>{apiData.key}</p><br/> 
+                     <p><strong>Accessibility: </strong>{apiData.accessibility}</p><br/> 
+            </template>
+            <template if:false={apiData}>
+                <p>No data available</p>
+            </template>
+        </div>
+        <br/>
+      &nbsp;&nbsp; <lightning-button variant="brand" label="Call API" title="callapi" onclick={callAPI}></lightning-button>
+       
+    </lightning-card>
+</template>

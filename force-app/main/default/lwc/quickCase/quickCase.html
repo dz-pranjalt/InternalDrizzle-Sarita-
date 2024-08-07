@@ -1,0 +1,30 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account">
+       <lightning-input type="text" label="Subject" name="subject" value={subject} onchange={handleEvent}></lightning-input>
+       <lightning-input type="textArea" label="Description" name="description" value={description} onchange={handleEvent}></lightning-input>
+       <lightning-combobox
+        name="status"
+        label="Status"
+        value={status}
+        onchange={handleEvent}
+        options={statusOptions}
+    >
+    </lightning-combobox>
+    <lightning-combobox
+        name="origin"
+        label="Case Origin"
+        value={origin}
+        onchange={handleEvent}
+        options={originOptions}
+    >
+    </lightning-combobox>
+    <lightning-combobox
+        name="priority"
+        label="Priority"
+        value={priority}
+        onchange={handleEvent}
+        options={priorityOptions}
+    >
+    </lightning-combobox>
+    </lightning-card>
+</template>

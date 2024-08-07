@@ -1,0 +1,10 @@
+<template>
+    <lightning-flow flow-api-name='reusableFlowLookup' onrecievedvalue={handleLookupSelection}
+    flow-input-variables={inputVariables} onstatuschange={handleStatusChange}>
+</lightning-flow>
+<div class="slds-var-m-vertical_medium">
+    <template if:true={selectedValue}>
+        Selected Id is {selectedValue.id} and Name is {selectedValue.name}
+    </template>
+</div>
+</template>

@@ -1,0 +1,7 @@
+<template>
+    <div class="slds-card">
+        <c-lookup-field field-label="Select Account Record" child-object-api-name='User'
+            target-field-api-name='AccountId' required onvalueselected={handleValueSelcted}></c-lookup-field>
+        The selected record Id is:- {selectedRecordId}
+    </div>
+</template>

@@ -1,0 +1,58 @@
+<aura:component controller="getLeadData" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="optionsVal" type="String"/>
+    <aura:attribute name="leadId" type="String"/>
+    <aura:attribute name="name" type="String"/>
+    <aura:attribute name="comments" type="String"/>
+    
+    <aura:attribute name="mydata" type="List"/>
+    
+    <lightning:navigation aura:id="navService"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}" />
+    
+    <div class="slds-section slds-is-open">
+        <table class="slds-table slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+            <thead>
+                <tr class="slds-text-heading--label">
+                    <th scope="col"><div class="slds-truncate" title="Account Name">Name</div></th>
+                    <th scope="col"><div class="slds-truncate" title="Phone">Phone</div></th>
+                    <th scope="col"><div class="slds-truncate" title="Email">Email</div></th>
+                    <th scope="col"><div class="slds-truncate" title="CreatedDate">CreatedDate</div></th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.mydata}" var="row" indexVar="index">
+                    <tr>
+                       <th scope="row" data-id="{!row.Id}" onclick="{!c.handleShowPopover}"><div class="slds-truncate" title="{!row.Name}">{!row.Name}</div></th>
+                        <td><div class="slds-truncate" title="{!row.Phone}">{!row.Phone}</div></td>
+                        <a href="0"><td><div class="slds-truncate" title="{!row.Email}">{!row.Email}</div></td></a>
+                        <td><div class="slds-truncate" title="{!row.CreatedDate}">{!row.CreatedDate}</div></td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+    
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" aura:id="Modalbox" class="slds-modal slds-modal_large">
+        <div class="slds-modal__container" style="width: 40%;">
+            <div class="slds-modal__header">
+                <p>Log a Call</p>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium">  
+                <lightning:input name="Name" label="Name" type="text" required="true" value="{!v.name}" aura:id="inputName"></lightning:input>
+                <lightning:select aura:id="select1" label="Subject" required="true" onchange="{!c.onChange}">
+                    <option value="Email">Email</option>
+                    <option value="Call">Call</option>
+                    <option value="Send Later">Send Later</option>
+                    <option value="Send Quote">Send Quote</option>
+                    <option value="Other">Other</option>
+                </lightning:select>
+                <lightning:textarea name="Comments" label="Comments" value="{!v.comments}" required="true" 	aura:id="areacomments"></lightning:textarea>
+                <div class="slds-m-top_medium slds-align_absolute-center">
+                    <lightning:button aura:id="submit" type="submit" label="Save" variant="brand"  onclick="{!c.handleSubmit}"/>
+                    <lightning:button label="Cancel" variant="brand"  onclick="{!c.closeModal}" />
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

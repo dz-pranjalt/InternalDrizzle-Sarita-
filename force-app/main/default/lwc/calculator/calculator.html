@@ -1,0 +1,14 @@
+<template>
+<lightning-card icon-name="custom:custom4">
+    <lightning-input label="Enter the first name" value={number1} onchange={hanleChange} name="num1">
+</lightning-input>
+ <lightning-input label="Enter the secon name" value={number2} onchange={hanleChange} name="num2">
+</lightning-input>
+<hr>
+<lightning-button label="Substract" variant="brand" onclick={handleSub}></lightning-button> &nbsp;&nbsp;
+<lightning-button label="Multification" variant="brand" onclick={doMult}></lightning-button> &nbsp;&nbsp;
+<lightning-button label="Division" variant="brand" onclick={doDivi}></lightning-button> &nbsp;&nbsp;
+<lightning-button label="Addition" variant="brand" onclick={handleAdition}></lightning-button>
+
+</lightning-card>
+</template>

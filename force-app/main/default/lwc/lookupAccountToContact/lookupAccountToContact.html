@@ -1,0 +1,21 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account">
+        <div class="slds-p-around_small">
+         <!-- <lightning-input type="text" variant="standard" name="name" label="Enter Account Number" value={searchKey} laceholder="type here..." onchange={handleSearch}>
+            <lightning-icon icon-name="sea" alternative-text="Doc image" ></lightning-icon> -->
+            <!--More icon please visit : https://www.lightningdesignsystem.com/icons/ -->
+         
+         <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+            <lightning-icon size="x-small" class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default" icon-name="utility:search"></lightning-icon>
+            <input type="text" placeholder="Placeholder Text" class="slds-input" value={searchKey} onchange={handleSearch}/>
+        </div><br/>
+
+         <template for:each={conList} for:item="con" for:index="idx">
+            Contact Name<p key={con.Id}>{con.Name}</p> &nbsp;&nbsp;
+            Contact Email : - {con.Email } &nbsp; Contact Phone :- {con.Phone}
+         </template>
+
+        </div>
+        
+    </lightning-card>
+</template>

@@ -1,0 +1,13 @@
+.bg{max-height: 25vw;
+    max-width: 100vw;
+    height: 192.5px;
+    width: 770px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin-bottom: 12px;
+}
