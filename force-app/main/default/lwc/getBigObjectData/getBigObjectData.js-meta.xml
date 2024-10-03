@@ -18,13 +18,6 @@
                 description="API name of the object"
                 required="true"
             />
-            <property
-                name="listViewName"
-                type="String"
-                label="List View Name"
-                description="Name of the list view"
-                required="true"
-            />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

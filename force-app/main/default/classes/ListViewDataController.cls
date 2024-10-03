@@ -1,9 +1,8 @@
-public with sharing class ListViewDataController {
+public without sharing class ListViewDataController {
     private final static String REQUEST_BODY = 'grant_type=password&client_id={0}&client_secret={1}&username={2}&password={3}';
     @AuraEnabled(cacheable=true)
     public static List<SObject> getListViewData(String objectApiName, String listViewName) {
         // Step 1: Get the ListView ID based on the object API name and ListView name
-        system.debug('listViewName ' + listViewName + ' objectApiName ' + objectApiName);
         ListView listViewId = [
             SELECT Id, Name, SObjectType
             FROM ListView
@@ -11,7 +10,6 @@ public with sharing class ListViewDataController {
             LIMIT 1
         ];
 
-        //String accessToken = ListViewDataController.generateToken('SalesforceLoginNC');
         // Step 2: Call the ListView API to get the field API names
         HttpRequest req = new HttpRequest();
         req.setEndpoint(
@@ -22,7 +20,7 @@ public with sharing class ListViewDataController {
         req.setHeader(
             'Authorization',
             'Bearer ' +
-            '00D5j00000Dq9wL!AQwAQKYL93BU83R7ykiGgKauN87.fsOLuaf_hLja54z9bxvUBw2eqTTbIdtQfTqOI_xLNYDSYX41Y67BaY9LvVza.tyUsMd3'
+            '00D5j00000Dq9wL!AQwAQKXWlP0q9pGo1JPSOkKN1dpp0LHHCXv4UGfwhjDxvY1npI2534jnEbhStLHkgdBHI2Dq2TEKvcyqcfNsJCHUQH3dTd1k'
         );
         //req.setHeader('Authorization', 'Bearer ' + accessToken);
         Http http = new Http();
@@ -37,7 +35,6 @@ public with sharing class ListViewDataController {
         List<Object> displayColumns = (List<Object>) jsonResponse.get('displayColumns');
         List<String> fieldApiNames = new List<String>();
         for (Object columnObj : displayColumns) {
-            System.debug('column ' + columnObj);
             Map<String, Object> column = (Map<String, Object>) columnObj;
             fieldApiNames.add((String) column.get('fieldApiName'));
         }
@@ -50,6 +47,7 @@ public with sharing class ListViewDataController {
         return records;
     }
 
+     /*
     public static String generateToken(String namedCredential) {
         String token = '';
         HttpRequest request = new HttpRequest();
@@ -81,6 +79,7 @@ public with sharing class ListViewDataController {
         return token;
     }
 
+   
     @AuraEnabled(cacheable=true)
     public static Map<String, String> getObjectFieldTypes(String objectApiName) {
         Map<String, String> fieldTypes = new Map<String, String>();
@@ -94,6 +93,79 @@ public with sharing class ListViewDataController {
         }
 
         return fieldTypes;
+    }
+    */
+
+    @AuraEnabled
+    public static SObject updateBigObjectRecord(Map<String, Object> updatedFields, String objectName) {
+        System.debug('updatedFields: ' + updatedFields + ' ' + objectName);
+
+        SObject updatedRecord = null;
+        String bigObjectName = createBigObjectName(objectName);
+        System.debug('bigObjectName: ' + bigObjectName);
+
+        // Check if updatedFields and other parameters are not null
+        if (updatedFields != null && !updatedFields.isEmpty() && bigObjectName != null) {
+            // Get the sObjectType dynamically using the object name provided
+            Schema.SObjectType sObjectType = Schema.getGlobalDescribe().get(bigObjectName);
+
+            if (sObjectType != null) {
+                // Create a new instance of the specified sObject type
+                updatedRecord = sObjectType.newSObject();
+
+                // Assume phoneNumber is part of the unique index or identifier for the Big Object
+                //updatedRecord.put('Phone__c', phoneNumber);
+
+                // Iterate over the updatedFields map and set the fields dynamically
+                Map<String, Schema.SObjectField> fieldMap = sObjectType.getDescribe().fields.getMap();
+                System.debug('fieldMap: ' + fieldMap);
+
+                for (String fieldName : updatedFields.keySet()) {
+                    Object fieldValue = updatedFields.get(fieldName);
+                    System.debug('fieldName: ' + fieldName + ', fieldValue: ' + fieldValue);
+
+                    // Check if the field exists in the sObject before setting it
+                    // Exclude specific fields like 'CreatedById' or any others you don't want to update
+                    if (fieldMap.containsKey(fieldName) && fieldName != 'CreatedById' && fieldName != 'Id') {
+                        updatedRecord.put(fieldName, fieldValue);
+                    } else {
+                        System.debug('Field ' + fieldName + ' does not exist on ' + objectName + ' or is excluded.');
+                    }
+                }
+
+                System.debug('updatedRecord: ' + updatedRecord);
+
+                // Insert the updated record as a new entry using Database.insertImmediate (for Big Objects)
+                try {
+                    List<Database.SaveResult> sr = Database.insertImmediate(new List<SObject>{ updatedRecord }); // Insert as a list
+                    System.debug('Record inserted successfully' + sr + ' ' + updatedRecord);
+                } catch (Exception e) {
+                    System.debug('Error inserting record: ' + e.getMessage());
+                }
+            } else {
+                System.debug('sObject type for ' + objectName + ' not found.');
+            }
+        } else {
+            System.debug('Required parameters are missing or empty.');
+        }
+
+        return updatedRecord;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static String createBigObjectName(String objectApiName) {
+        String bigObjectName = '';
+        System.debug('objectApiName:' + objectApiName);
+        if (String.isNotBlank(objectApiName)) {
+            if (objectApiName.endsWith('__c')) {
+                bigObjectName = objectApiName.removeEnd('__c') + '__b';
+            } else {
+                bigObjectName = objectApiName.endsWith('__b') ? objectApiName : objectApiName + '__b';
+            }
+            return bigObjectName;
+        } else {
+            return 'Error: Invalid object names';
+        }
     }
 
     @AuraEnabled(cacheable=true)
@@ -113,7 +185,6 @@ public with sharing class ListViewDataController {
                 fieldInfo.put('name', String.valueOf(fieldName));
                 fieldInfo.put('type', fieldDescribe.getType().name());
                 fieldInfo.put('label', fieldDescribe.getLabel());
-
                 objectFieldInfo.add(fieldInfo);
             }
         }
@@ -124,6 +195,7 @@ public with sharing class ListViewDataController {
     //Method To get label of object
     public static Map<String, String> getFieldLabelToApiNameMap(String objectName) {
         Map<String, String> fieldLabelToApiNameMap = new Map<String, String>();
+
         Schema.SObjectType sObjectType = Schema.getGlobalDescribe().get(objectName);
         if (sObjectType != null) {
             Map<String, Schema.SObjectField> fieldsMap = sObjectType.getDescribe().fields.getMap();
@@ -135,57 +207,67 @@ public with sharing class ListViewDataController {
         return fieldLabelToApiNameMap;
     }
 
-    @AuraEnabled
-    public static String saveNewRecord(String data, String objectName) {
-        // Deserialize the input data into a Map
-        Map<String, Object> parsedData = (Map<String, Object>) JSON.deserializeUntyped(data);
+    @AuraEnabled(cacheable=true)
+    public static void getBigObjectRecord(String objectName) {
+        String soqlQuery = '';
+        String removeLastName = '';
+        String bigObjectName = '';
+        Schema.SObjectType standardObjectType;
+        if (objectName.endsWith('__c')) {
+            removeLastName = objectName.removeEnd('__c');
+            bigObjectName = removeLastName + '__b';
+            //soqlQuery = 'SELECT ' + String.join(fieldApiNames, ',') + ' FROM ' + objectApiName;
+        } else {
+            bigObjectName = objectName + '__b';
+        }
+        Map<String, String> mapStr = ListViewDataController.getFieldLabelToApiNameMap(bigObjectName);
 
-        // Get the describe information for the standard object
-        Map<String, Schema.SObjectField> stdFieldMap = Schema.getGlobalDescribe()
-            .get(objectName)
+        /*List<SObject> records = Database.query(soqlQuery);
+         return sobjectList;*/
+    }
+    @AuraEnabled(cacheable=true)
+    public static List<SObject> getFieldsOfBigobject(String objectApiName, String arg) {
+        String bigObjectName = createBigObjectName(objectApiName);
+        String soqlQuery = '';
+
+        Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe()
+            .get(bigObjectName)
             .getDescribe()
             .fields.getMap();
-        Map<String, String> stdFieldLabelToApiMap = new Map<String, String>();
-        for (Schema.SObjectField field : stdFieldMap.values()) {
-            Schema.DescribeFieldResult stdFieldDescribe = field.getDescribe();
-            stdFieldLabelToApiMap.put(stdFieldDescribe.getLabel(), field.getDescribe().getName());
-        }
 
-        // Get the describe information for the big object
-        String bObject = objectName + '__b';
-        Map<String, Schema.SObjectField> bigFieldMap = Schema.getGlobalDescribe()
-            .get(bObject)
-            .getDescribe()
-            .fields.getMap();
-        Map<String, String> bigFieldLabelToApiMap = new Map<String, String>();
-        for (Schema.SObjectField field : bigFieldMap.values()) {
-            Schema.DescribeFieldResult bigFieldDescribe = field.getDescribe();
-            bigFieldLabelToApiMap.put(bigFieldDescribe.getLabel(), field.getDescribe().getName());
-        }
+        List<String> customFieldApiNames = new List<String>();
 
-        // Create a new SObject for the big object
-        SObject bigObjectRecord = Schema.getGlobalDescribe().get(bObject).newSObject();
+        for (String fieldName : fieldMap.keySet()) {
+            if (fieldName.endsWith('__c')) {
+                customFieldApiNames.add(fieldName);
+            }
 
-        // Map values from the standard object to the big object based on matching field labels
-        for (String label : stdFieldLabelToApiMap.keySet()) {
-            if (bigFieldLabelToApiMap.containsKey(label)) {
-                String stdFieldApiName = stdFieldLabelToApiMap.get(label);
-                String bigFieldApiName = bigFieldLabelToApiMap.get(label);
-                if (parsedData.containsKey(stdFieldApiName)) {
-                    bigObjectRecord.put(bigFieldApiName, parsedData.get(stdFieldApiName));
-                }
+            SObjectType sObjType = ((SObject) Type.forName(bigObjectName).newInstance()).getSObjectType();
+            Schema.DescribeFieldResult describe = sObjType.getDescribe().fields.getMap().get(fieldName).getDescribe();
+
+            if (describe.getType() == Schema.DisplayType.REFERENCE) {
+                String refFieldName = fieldName.contains('__c') ? fieldName.replace('__c', '__r.Name') : fieldName;
+                customFieldApiNames.add(refFieldName);
             }
         }
 
-        // Insert the big object record
-        try {
-            system.debug('bigObjectRecord ' + bigObjectRecord);
-            Database.insertImmediate(bigObjectRecord);
-        } catch (DmlException e) {
-            System.debug('Error inserting big object record: ' + e.getMessage());
-            return 'Error: ' + e.getMessage();
+        System.debug('customFieldApiNames ' + customFieldApiNames);
+        if (arg != null) {
+            System.debug('not null ' + arg);
+            soqlQuery =
+                'SELECT ' +
+                String.join(customFieldApiNames, ', ') +
+                ' FROM ' +
+                bigObjectName +
+                ' WHERE Phone__c = :arg';
+        } else {
+            System.debug(' null');
+            soqlQuery = 'SELECT ' + String.join(customFieldApiNames, ', ') + ' FROM ' + bigObjectName;
         }
 
-        return 'Record inserted successfully';
+        // Execute the query and fetch records
+        List<SObject> records = Database.query(soqlQuery);
+        System.debug('records ' + records);
+        return records;
     }
 }
