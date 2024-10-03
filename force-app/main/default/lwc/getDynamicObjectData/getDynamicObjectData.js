@@ -118,7 +118,7 @@ export default class GetDynamicObjectData extends NavigationMixin(LightningEleme
                 }
             }
         }
-        console.log("columns ", JSON.stringify(columns));
+        //console.log("columns ", JSON.stringify(columns));
         return columns;
     }
 
@@ -170,6 +170,7 @@ export default class GetDynamicObjectData extends NavigationMixin(LightningEleme
     handleRefresh() {
         //this.retrieveRecords();
         this.isLoading = true;
+        // eslint-disable-next-line @lwc/lwc/no-async-operation
         setTimeout(() => {
             this.isLoading = false;
         }, 2000);
